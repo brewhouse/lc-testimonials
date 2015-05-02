@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: LC Testimonial Sliders
-Description: Sliding client testimonials with SlideJS
+Description: Sliding client testimonials with responsive jquery
 Author: Learn Codez
 Version: 2.0
 Author URI: http://learncodez.com

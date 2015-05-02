@@ -144,7 +144,34 @@
 	color: #999;
 	margin: 0 5px 0 0;	
 	text-align: center;
+  border:none;
 }
+
+.testimonials li {
+  list-style: none;
+  color: #999;
+  margin: 20px 5px 20px 0px;
+  border-bottom: 2px solid;
+  padding-left: 20px;  
+}
+
+.testimonials .client_image {
+  float: left;
+}
+
+.testimonials .textimonial-text {
+  margin-left: 120px;
+}
+
+
+.testimonials .client_name {
+  margin-left: 120px;
+}
+
+.testimonials .company_name {
+  margin-left: 120px;
+}
+
 
 
 .client_name { font-weight: bold; margin-top:20px;}

@@ -3,7 +3,7 @@
 Plugin Name: LC Testimonial Sliders
 Description: Sliding client testimonials with SlideJS
 Author: Learn Codez
-Version: 1.0
+Version: 2.0
 Author URI: http://learncodez.com
 License: GPLv2
 */
@@ -56,7 +56,35 @@ function lc_testimonials_init()
 	);
 
 	register_post_type('testimonials', $args);	
-	    
+
+
+	/*≈=====≈=====≈=====≈=====≈=====≈=====≈=====
+	Testimonial Taxonomy
+	≈=====≈=====≈=====≈=====≈=====≈=====≈=====*/
+	// Register and configure Testimonial Category taxonomy
+	$taxonomy_labels = array(
+		'name' => __( 'Testimonial Categories', 'lc-testimonials' ),
+		'singular_name' => __( 'Testimonial Category', 'lc-testimonials' ),
+		'search_items' =>  __( 'Search Testimonial Categories', 'lc-testimonials' ),
+		'all_items' => __( 'All Testimonial Categories', 'lc-testimonials' ),
+		'parent_item' => __( 'Parent Testimonial Categories', 'lc-testimonials' ),
+		'parent_item_colon' => __( 'Parent Testimonial Category', 'lc-testimonials' ),
+		'edit_item' => __( 'Edit Testimonial Category', 'lc-testimonials' ),
+		'update_item' => __( 'Update Testimonial Category', 'lc-testimonials' ),
+		'add_new_item' => __( 'Add New Testimonial Category', 'lc-testimonials' ),
+		'new_item_name' => __( 'New Testimonial Category', 'lc-testimonials' ),
+		'menu_name' => __( 'Categories', 'lc-testimonials' )
+  	);
+
+	register_taxonomy( 'testimonial_category', 'testimonials', array(
+			'hierarchical' => true,
+			'labels' => $taxonomy_labels,
+			'show_ui' => true,
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'testimonials' )
+		)
+	);		
+    
 }
 
 /**
@@ -99,6 +127,47 @@ function lc_testimonials_form() {
 	</p>
 	<?php
 }
+
+
+
+add_filter( 'manage_edit-testimonials_columns', 'lc_testimonials_edit_columns' );
+function lc_testimonials_edit_columns( $columns ) {
+    $columns = array(
+        'cb' => '<input type="checkbox" />',
+        'title' => 'Title',
+        'testimonial' => 'Testimonial',
+        'testimonial-client-name' => 'Client\'s Name',
+        'testimonial-source' => 'Company Name',
+        'testimonial-link' => 'Website Link',
+        'author' => 'Posted by',
+        'date' => 'Date'
+    );
+ 
+    return $columns;
+}
+ 
+add_action( 'manage_posts_custom_column', 'lc_testimonials_columns', 10, 2 );
+function lc_testimonials_columns( $column, $post_id ) {
+    $testimonial_data = get_post_meta( $post_id, '_testimonial', true );
+    switch ( $column ) {
+        case 'testimonial':
+            the_excerpt();
+            break;
+        case 'testimonial-client-name':
+            if ( ! empty( $testimonial_data['client_name'] ) )
+                echo $testimonial_data['client_name'];
+            break;
+        case 'testimonial-source':
+            if ( ! empty( $testimonial_data['company_name'] ) )
+                echo $testimonial_data['company_name'];
+            break;
+        case 'testimonial-link':
+            if ( ! empty( $testimonial_data['website_link'] ) )
+                echo $testimonial_data['website_link'];
+            break;
+    }
+}
+
 
 
 //Adding the responsiveslides.js script and our script
@@ -244,7 +313,40 @@ function dispaly_lc_testimonial_slider_by_category($atts, $content=null){
 add_shortcode('lc_testimonials_by_category', 'dispaly_lc_testimonial_slider_by_category');  
 
 
+//Displaying the testimonials
+function lc_testimonials_page(){
 
+	$args = array(  
+        'post_type' => 'testimonials', 
+        'posts_per_page' => 5       
+    ); 
+	$the_query = new WP_Query($args);   
+
+ 	$result = '<div class="testimonials">';
+
+	while ( $the_query->have_posts() ) : $the_query->the_post();
+    	$img= get_the_post_thumbnail( $post->ID);    	
+		$post_id = get_the_ID();
+    	$testimonial_data = get_post_meta( $post_id, '_testimonial', true );    	
+		
+    	$result .= '<li>
+				        <div class="client_image">' . $img . '</div>
+				        <div class="textimonial-text"> ' .get_the_content(). '</div>
+				        <div class="client_name">'.$testimonial_data['client_name'] .' </div>
+				        <div class="company_name"><a href="'.$testimonial_data['website_link']. '" target="blank" >'.$testimonial_data['company_name'] .'</a></div>
+				    </li>';
+
+	endwhile;
+
+    // Reset Post Data
+	wp_reset_postdata();
+
+        $result .= '</div>';            
+
+    return $result;
+}
+
+add_shortcode('lc_testimonials_page', 'lc_testimonials_page');  
 
 /* Print the required js script in footer    */
 function lc_print_testimonials_script() {  

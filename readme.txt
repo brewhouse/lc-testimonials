@@ -25,6 +25,11 @@ LC Testimonial SliderWordPress plugin is a great tool to show your clients testi
 * Major Browser Supported
 
 
+= Credits =
+
+* Developer: [LearnCodez](http://www.learncodez.com)
+
+
 == Installation ==
 
 There are 3 ways to install this plugin:
@@ -71,10 +76,6 @@ On WordPress dashboard, Go to LC Testimonial Slider => Settings page. You will s
 = How to show Pagination Links in  Testimonial Slider =
 
 On WordPress dashboard, Go to LC Testimonial Slider => Settings page. You will see option Pager. You will find the checkbox next to it. Select the checkbox to add pager to the testimonial slider or uncheck to hide it. Save Changes.
-
-= Credits =
-
-* Developer: [LearnCodez](http://www.learncodez.com)
 
 
 == Upgrade Notice ==

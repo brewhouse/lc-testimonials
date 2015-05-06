@@ -3,7 +3,7 @@ Contributors: LearnCodez
 Tags: testimonial, slider, slideshow, feedback, content slider, responsive, widget, content, jquery, gallery, custom post type
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.1
+Stable tag: 1.0
 License: GPLv2 or later
 
 A great tool to show your clients testimonials. You can display testimonials in any post or page content.
@@ -56,22 +56,10 @@ There are 3 ways to install this plugin:
 `[lc_testimonials]`
 
 
-* To insert the Testimonial Slider by category, paste the below shortcode in the content section of your WordPress post/page:
-
-`[lc_testimonials_by_category category ="category-name"]`
-
-
-* To create testimonials page, paste the below shortcode in the content section of your WordPress page:
-
-`[lc_testimonials_page]`
-
-
-
 == Screenshots ==
 
 1. Testimonial Slider Skins
 2. Settings Panel Overview
-3. Testimonial Page 
 
 
 == Frequently Asked Questions ==
@@ -83,6 +71,11 @@ On WordPress dashboard, Go to LC Testimonial Slider => Settings page. You will s
 = How to show Pagination Links in  Testimonial Slider =
 
 On WordPress dashboard, Go to LC Testimonial Slider => Settings page. You will see option Pager. You will find the checkbox next to it. Select the checkbox to add pager to the testimonial slider or uncheck to hide it. Save Changes.
+
+= Credits =
+
+* Developer: [LearnCodez](http://www.learncodez.com)
+
 
 == Upgrade Notice ==
 
@@ -98,3 +91,6 @@ No major issues!
 * Created Shortcode for testimonials by category
 * Created Testimonial Page template
 * Created shortcode for testimonial Page Template
+
+= 2.1 = 
+*Bug Fixed, Regarding Testimonial name

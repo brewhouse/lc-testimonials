@@ -3,7 +3,7 @@
 Plugin Name: LC Testimonial Sliders
 Description: Sliding client testimonials with responsive jquery
 Author: Learn Codez
-Version: 2.0
+Version: 2.1
 Author URI: http://learncodez.com
 License: GPLv2
 */
@@ -217,8 +217,7 @@ function lc_testimonials_save_post( $post_id ) {
 		remove_action( 'save_post', 'lc_testimonials_save_post' );
 
 		wp_update_post( array(
-			'ID' => $post_id,
-			'post_title' => 'Testimonial - ' . $post_id
+			'ID' => $post_id			
 		) );
 
 		add_action( 'save_post', 'lc_testimonials_save_post' );
@@ -247,8 +246,8 @@ function lc_dispaly_testimonial_slider(){
  	$result = '<div class="rslides_container"> <ul class="rslides" id="slider1">';
 
 	while ( $the_query->have_posts() ) : $the_query->the_post();
-    	$img= get_the_post_thumbnail( $post->ID);    	
 		$post_id = get_the_ID();
+    	$img= get_the_post_thumbnail($post_id);		
     	$testimonial_data = get_post_meta( $post_id, '_testimonial', true );    	
 		
     	$result .= '<li>
@@ -289,8 +288,8 @@ function dispaly_lc_testimonial_slider_by_category($atts, $content=null){
  	$result = '<div class="rslides_container"> <ul class="rslides" id="slider1">';
 
 	while ( $the_query->have_posts() ) : $the_query->the_post();
-    	$img= get_the_post_thumbnail( $post->ID);    	
 		$post_id = get_the_ID();
+    	$img= get_the_post_thumbnail($post_id); 		
     	$testimonial_data = get_post_meta( $post_id, '_testimonial', true );    	
 		
     	$result .= '<li>
@@ -325,8 +324,8 @@ function lc_testimonials_page(){
  	$result = '<div class="testimonials">';
 
 	while ( $the_query->have_posts() ) : $the_query->the_post();
-    	$img= get_the_post_thumbnail( $post->ID);    	
 		$post_id = get_the_ID();
+    	$img= get_the_post_thumbnail($post_id);	
     	$testimonial_data = get_post_meta( $post_id, '_testimonial', true );    	
 		
     	$result .= '<li>

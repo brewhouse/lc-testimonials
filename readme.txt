@@ -61,6 +61,16 @@ There are 3 ways to install this plugin:
 `[lc_testimonials]`
 
 
+* To insert the Testimonial Slider by category, paste the below shortcode in the content section of your WordPress post/page:
+
+`[lc_testimonials_by_category category="category_name"]`
+
+
+* To insert a page for all Testimonials, paste the below shortcode in the content section of your WordPress page:
+
+`[lc_testimonials_page]`
+
+
 == Screenshots ==
 
 1. Testimonial Slider Skins

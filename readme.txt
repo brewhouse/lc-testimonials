@@ -75,6 +75,7 @@ There are 3 ways to install this plugin:
 
 1. Testimonial Slider Skins
 2. Settings Panel Overview
+3. Testimonial Page
 
 
 == Frequently Asked Questions ==

@@ -1,5 +1,5 @@
 ﻿=== LC Testimonial Slider ===
-Contributors: LearnCodez
+Contributors: LearnCodez,sachinyadav82
 Tags: testimonial, slider, slideshow, feedback, content slider, responsive, widget, content, jquery, gallery, custom post type
 Requires at least: 3.8
 Tested up to: 4.2
